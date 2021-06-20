@@ -40,8 +40,16 @@
         </div>
       </nav>
     </header>
+    <body>
+      <% if flash[:notice] %>
+       <p id="notice">
+         <%= flash[:notice] %>
+       </p>
+      <% end %>
+      <%= yield %>
+    </body>
 
-    <%= yield %>
+
     <footer>
      <div class="container mt-5">
   	  <div class="row">

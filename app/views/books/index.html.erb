@@ -1,4 +1,10 @@
-<%= render 'books/user_info', user: @user, books: @books, book: @book %>
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+      <%= render 'books/user_info', user: @user, books: @books, book: @book %>
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
