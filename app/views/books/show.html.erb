@@ -1,26 +1,34 @@
-<%= render 'books/user_info', user: @user, books: @books, book: @book %>
-  <div class="col-md-8 offset-md-1">
-    <h2>Book detail</h2>
-    <table class="table">
-      <tr>
-        <td>
-          <%= link_to user_path(@book1.user_id) do %>
-            <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size: "40x40" %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to @book1.title, "/books/#{@book1.id}" %>
-        </td>
-        <td><%= @book1.body %></td>
-        <td>
-          <%= link_to "edit", edit_book_path(@book1.id), class:"btn btn-sm btn-success" %>
-        </td>
-        <td>
-           <% if @book1.user == current_user %>
-             <%= link_to "Destroy", book_path(@book1.id), method: :delete, class:"btn btn-sm btn-danger" %>
-           <% end %>
-        </td>
-      </tr>
-    </table>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'books/user_info', user: @book1.user, book: @book %>
+    </div>
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
+          <tr>
+            <td>
+              <%= link_to user_path(@book1.user_id) do %>
+              <%= attachment_image_tag @user, :profile_image, format: 'jpeg', fallback: "no_image.jpg",size: "40x40" %>
+              <% end %>
+              <br><%= link_to @user.name, user_path(@book1.user.id) %>
+            </td>
+            <td>
+              <%= link_to @book1.title, book_path(@book1.id) %>
+            </td>
+            <td><%= @book1.body %></td>
+            <td>
+              <% if @book1.user == current_user %>
+              <%= link_to "Edit", edit_book_path(@book1.id), class:"btn btn-sm btn-success" %>
+              <% end %>
+            </td>
+            <td>
+              <% if @book1.user == current_user %>
+              <%= link_to "Destroy", book_path(@book1.id), method: :delete, class:"btn btn-sm btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
