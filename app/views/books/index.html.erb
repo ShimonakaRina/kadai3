@@ -31,8 +31,21 @@
               <%= link_to book.title, "/books/#{book.id}" %>
             </th>
             <th><%= book.body %></th>
+            <th>
+            <% if book.favorited_by?(current_user) %>
+              <%= link_to book_favorites_path(book), method: :delete do %>
+               ♥<%= book.favorites.count %>
+               <% end %>
+            <% else %>
+              <%= link_to book_favorites_path(book), method: :post do %>
+              ♡<%= book.favorites.count %>
+              <% end %>
+            <% end %>
+            </th>
+            <th>コメント数: <%= book.book_comments.count %></th>
           </tr>
           <% end %>
+
         </tbody>
       </table>
     </div>
