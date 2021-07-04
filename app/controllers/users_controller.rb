@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @books = Book.all
     @book = Book.new
     @users = User.all
+
   end
   def edit
     @user = User.find(params[:id])

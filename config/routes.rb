@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
   get 'user/:user_id/followers' => 'relationships#followers', as: 'user_followers'
   get 'user/:user_id/followings' => 'relationships#followings', as: 'user_followings'
+  get '/search' => 'search#search'
   devise_for :users
   resources :books, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :favorites, only: [:create, :destroy]
