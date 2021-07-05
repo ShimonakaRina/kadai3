@@ -44,10 +44,8 @@
         <% end %>
       <% end %>
           <%= form_with model:[@book1,@book_comment], remote: true do |f| %>
-            <div class="hide">
               <%= f.text_area :comment, size:"90x5" %><br>
               <%= f.submit '送信'%>
-            </div>
           <% end %>
         </div>
       </div>
