@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @user = current_user
-    @books = Book.all
+    @books = Book.all.sort {|a,b| b.favorited_users.count <=> a.favorited_users.count}
     @book = Book.new
   end
 
