@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   def index
     @user = current_user
+    Book.joins(:favorites).where(favorites: { created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)}).group(:id).order("count(*) desc")
     @books = Book.all.sort {|a,b| b.favorited_users.count <=> a.favorited_users.count}
     @book = Book.new
   end
