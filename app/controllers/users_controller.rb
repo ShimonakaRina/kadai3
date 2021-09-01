@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     @books = Book.all
     @book = Book.new
     # @users = User.all
-    @users = User.order("RANDOM()").limit(5)
+    @users = User.all
 
   end
   def edit
