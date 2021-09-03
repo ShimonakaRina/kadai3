@@ -26,7 +26,6 @@ class UsersController < ApplicationController
     @user = current_user
     @books = Book.all
     @book = Book.new
-    # @users = User.all
     @users = User.all
 
   end
