@@ -60,7 +60,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  def ensure_correct_user
+  def ensure_correct_user　# ログインしていなければ編集できない
     @book = Book.find(params[:id])
     unless @book.user == current_user
       redirect_to books_path
