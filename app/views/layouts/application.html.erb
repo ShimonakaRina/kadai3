@@ -31,18 +31,18 @@
                   <% end %>
                 </div>
               </div>
-              <li><%= link_to "Home", user_path(current_user.id),class:"fas fa-home nav-link text-light" %></li>
-              <li><%= link_to "users", users_path,class:"fas fa-users nav-link text-light" %></li>
-              <li><%= link_to "books", books_path,class:"fas fa-book-open nav-link text-light" %></li>
-              <li><%= link_to "logout", destroy_user_session_path,class:"fas fa-sign-out-alt nav-link text-light", method: :delete %></li>
+              <li><%= link_to "Home", user_path(current_user.id),class:"fas fa-home nav-link text-light test" %></li>
+              <li><%= link_to "users", users_path,class:"fas fa-users nav-link text-light test" %></li>
+              <li><%= link_to "books", books_path,class:"fas fa-book-open nav-link text-light test" %></li>
+              <li><%= link_to "logout", destroy_user_session_path,class:"fas fa-sign-out-alt nav-link text-light test", method: :delete %></li>
               <% else %>
-              <li><%= link_to "Home", root_path,class:"fas fa-home nav-link text-light" %></li>
-              <li><%= link_to "about", home_about_path,class:"fas fa-link nav-link text-light" %></li>
+              <li><%= link_to "Home", root_path,class:"fas fa-home nav-link text-light test" %></li>
+              <li><%= link_to "about", home_about_path,class:"fas fa-link nav-link text-light test" %></li>
               <li>
-              <%= link_to "sign up", new_user_registration_path,class:"fas fa-user-plus nav-link text-light" %>
+              <%= link_to "sign up", new_user_registration_path,class:"fas fa-user-plus nav-link text-light test" %>
               </li>
               <li>
-              <%= link_to "login", new_user_session_path,class:"fas fa-sign-in-alt nav-link text-light" %>
+              <%= link_to "login", new_user_session_path,class:"fas fa-sign-in-alt nav-link text-light test" %>
               </li>
               <% end %>
             </ul>
