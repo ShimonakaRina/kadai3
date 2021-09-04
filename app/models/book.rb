@@ -24,6 +24,13 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  # 今日投稿された Post を取得
+  scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+
+  # 昨日投稿された Post を取得
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
 

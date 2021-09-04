@@ -19,6 +19,14 @@
           <td>followers</td>
           <td><%= link_to user.follower_user.count, user_followers_path(user) %></td>
         </tr>
+        <tr>
+          <td>今日の投稿数</td>
+          <td><%= @books.created_today.count %></td>
+        </tr>
+        <tr>
+          <td>機能の投稿数</td>
+          <td><%= @books.created_yesterday.count %></td>
+        </tr>
       </tbody>
   </table>
   <% unless @user.id == current_user.id %>
