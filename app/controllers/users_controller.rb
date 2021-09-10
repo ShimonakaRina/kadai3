@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
@@ -25,6 +27,8 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @books = Book.all
+    @today_book = @books.created_today
+    @yesterday_book = @books.created_yesterday
     @book = Book.new
     @users = User.all
 

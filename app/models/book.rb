@@ -8,6 +8,13 @@ class Book < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :follower_user, through: :followed, source: :follower
+  
+  # 今日投稿された Book を取得
+  scope :created_today, -> { where(created_at: Time.zone.now.beginning_of_day) }
+
+  # 昨日投稿された Book を取得
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+  
   is_impressionable counter_cache: true
   def follow(user_id)
     follower.create(followed_id: user_id)
@@ -25,11 +32,6 @@ class Book < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  # 今日投稿された Post を取得
-  scope :created_today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
-
-  # 昨日投稿された Post を取得
-  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
