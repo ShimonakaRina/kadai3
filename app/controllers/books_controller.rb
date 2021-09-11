@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.new
     @book1 = Book.find(params[:id])
-    impressionist(@book1, nil)
+    impressionist(@book1, nil) # 閲覧数
     @user = @book1.user
     @books = Book.where(user_id: @user.id).all
     @book_comment = BookComment.new
